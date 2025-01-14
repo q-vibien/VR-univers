@@ -5,17 +5,71 @@
     <title>Setup</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
   </head>
   <body>
     <!-- Ctrl alt i pour l'inspecteur -->
-    <a-scene>
+
+    <a-scene fog="type: linear; color: #f15d47; near: 1; far: 10">
       <a-assets>
-        <img id="texture" src="./assets/Moon_texture.jpg" />
+        <a-asset-item id="lamp" src="./assets/lava-lamp.glb"></a-asset-item>
+        <a-asset-item id="table" src="./assets/table.glb"></a-asset-item>
+        <a-asset-item id="chair" src="./assets/tabouret.glb"></a-asset-item>
+        <a-asset-item
+          id="lampe-sol"
+          src="./assets/lampe-sol.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="ventilateur"
+          src="./assets/ventilo.glb"
+        ></a-asset-item>
+        <img id="sol" src="./assets/ground.jpg" alt="" />
       </a-assets>
-      <a-sphere position="0 1.5 -3.5" radius=".5" src="#texture"></a-sphere>
-      <a-sky color="#000"></a-sky>
-      <a-camera position="0"></a-camera>
+
+      <a-entity gltf-model="#lamp" position="0 1.5 -2" scale="0.1 0.1 0.1">
+        <a-light type="ambient" color="white" intensity=".75"></a-light>
+        
+
+      </a-entity>
+
+      <a-entity
+        gltf-model="#table"
+        position="0 .75 -2"
+        scale=".5 .5 .5"
+      ></a-entity>
+      <a-entity
+        gltf-model="#chair"
+        position="1 .75 -2"
+        scale="1 1 1"
+      ></a-entity>
+      <a-entity
+        gltf-model="#chair"
+        position="-1 .75 -2"
+        scale="1 1 1"
+      ></a-entity>
+      <a-entity gltf-model="#lampe-sol" position="3 .15 -5" scale="2 2 2">
+      </a-entity>
+      <a-entity
+        gltf-model="#lampe-sol"
+        position="-3 .15 -5"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#ventilateur"
+        position="0 3 -2"
+        scale="1 1 1"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 2000; easing: linear"
+      >
+      </a-entity>
+      <a-sky color="red"></a-sky>
+      <a-plane
+        src="#sol"
+        height="10"
+        width="10"
+        position="0 0 -4"
+        rotation="-90 0 0"
+        material="shader: flat; fog: false"
+      ></a-plane>
     </a-scene>
   </body>
 </html>
